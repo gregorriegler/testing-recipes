@@ -29,17 +29,15 @@ public class ContractTest {
 
     /**
      * Testing our own code, our client.
+     * We are stubbing the response we'd expect the real service to respond with.
      * We know if this test fails, that there has to be a problem within our client.
      */
     @Test
-    public void can_fetch_doctype_from_expected_response() {
-        // here we are stubbing the response we'd expect the real service to respond with.
-        // the test tells us, if our client works.
-        // meaning: our client is able to handle an expected response.
+    public void fetch_doctype_from_expected_response() {
         stubFor(get("/")
             .willReturn(ok().withBody("<!doctype html>")));
 
-        testReadDocType("http://localhost:8089");
+        testFetchDocType("http://localhost:8089");
     }
 
     /**
@@ -48,18 +46,18 @@ public class ContractTest {
      * Could be a problem with the connection, or the server just returned a bad response.
      */
     @Test
-    public void can_fetch_doctype_from_actual_response() {
-        testReadDocType("http://www.google.com");
+    public void fetch_doctype_from_actual_response() {
+        testFetchDocType("http://www.google.com");
     }
 
     /**
-     * Both tests share the same "act & assert" part, but against different systems.
-     * This is important so we are actually replaying the same scenario, and compare the two worlds:
-     * "Actual" (=Real Service) vs "Expected" (=What we would expect from the Real Service)
+     * Both tests share the same "act & assert" part.
+     * So we are replaying the same scenario against both a stub that behaves as "expected", and the "actual" service.
+     * And we can compare the two results.
      *
      * @param url
      */
-    private void testReadDocType(String url) {
+    private void testFetchDocType(String url) {
         Client client = new Client(url);
 
         String docType = client.readDocType();
