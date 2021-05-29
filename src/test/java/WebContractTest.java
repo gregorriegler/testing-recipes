@@ -22,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * If the internet connection drops, or the remote system is down, it will fail.
  * So we probably don't want to run this test within our commit suite.
  */
-public class ContractTest {
+public class WebContractTest {
 
     @Rule
     public WireMockRule wireMockRule = new WireMockRule(8089);

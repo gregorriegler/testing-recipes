@@ -1,3 +1,3 @@
 # Testing Recipes
 
-[Contract Test without PACT](src/test/java/ContractTest.java)
+[Web Contract Test without PACT](src/test/java/WebContractTest.java)
