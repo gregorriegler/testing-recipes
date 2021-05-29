@@ -1,3 +1,5 @@
+package web;
+
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import org.apache.commons.io.IOUtils;
 import org.junit.Rule;
