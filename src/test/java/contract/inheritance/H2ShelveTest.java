@@ -1,9 +1,9 @@
-package repository;
+package contract.inheritance;
 
 import java.util.List;
 import java.util.Optional;
 
-public class H2ShelveTest extends ContractTest {
+public class H2ShelveTest extends BookShelveContract {
 
     @Override
     protected BookShelve emptyShelve() {
